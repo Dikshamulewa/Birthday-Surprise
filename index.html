@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -49,6 +49,22 @@ body {font-family:Arial,sans-serif;background:linear-gradient(135deg,#ff9a9e 0%,
 <img src="https://images.unsplash.com/photo-1570392228166-6a1f3e4ee93a?w=200" class="memory-img">
 <h3>Cuddles 🥰</h3><p>Love being in your arms!</p>
 </div>
+
+   <div class="questions">
+            <div class="question">
+                <div class="question-text">Q1: What's your favorite memory of us? 💭</div>
+                <textarea placeholder="Tell me your favorite moment..." rows="3" style="width: 100%; padding: 1rem; border-radius: 10px; border: 2px solid #ff69b4; font-size: 1.1rem;"></textarea>
+            </div>
+            
+            <div class="question">
+                <div class="question-text">Q2: What do you love most about me? 🥰</div>
+                <textarea placeholder="I want to know everything! 💕" rows="3" style="width: 100%; padding: 1rem; border-radius: 10px; border: 2px solid #ff69b4; font-size: 1.1rem;"></textarea>
+            </div>
+            
+            <div class="question">
+                <div class="question-text">Q3: Where should we go for our first anniversary? ✈️</div>
+                <textarea placeholder="Dream destination..." rows="3" style="width: 100%; padding: 1rem; border-radius: 10px; border: 2px solid #ff69b4; font-size: 1.1rem;"></textarea>
+            </div>
 </div>
 
 <script>
@@ -56,5 +72,369 @@ const noBtn=document.getElementById('noBtn');noBtn.onmouseenter=function(e){cons
 function showPage2(){document.getElementById('page1').style.display='none';document.getElementById('page2').style.display='block';}
 setInterval(()=>{const heart=document.createElement('div');heart.className='heart';heart.innerHTML='💕';heart.style.left=Math.random()*100+'vw';heart.style.animationDuration=(Math.random()*3+3)+'s';document.getElementById('hearts').appendChild(heart);setTimeout(()=>heart.remove(),7000);},500);
 </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Love! 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Floating hearts animation */
+        .heart {
+            position: absolute;
+            color: #ff69b4;
+            font-size: 20px;
+            animation: float 6s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+
+        /* Page 1 - Proposal */
+        .page1 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            position: relative;
+        }
+
+        .proposal-text {
+            font-size: 2.5rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 3rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .buttons {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .btn {
+            padding: 1.5rem 3rem;
+            font-size: 1.5rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .yes-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+        }
+
+        .no-btn {
+            background: linear-gradient(45deg, #bdc3c7, #95a5a6);
+            color: #2c3e50;
+            box-shadow: 0 10px 30px rgba(189, 195, 199, 0.4);
+        }
+
+        .no-btn:hover {
+            transform: translate(calc(50vw - 50%), calc(50vh - 50%)) !important;
+            background: linear-gradient(45deg, #e74c3c, #c0392b) !important;
+            color: white !important;
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        .btn-glow {
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+            animation: glow 1s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 30px rgba(255, 255, 255, 0.8); }
+            to { box-shadow: 0 0 50px rgba(255, 255, 255, 1); }
+        }
+
+        /* Page 2 - Memories */
+        .page2 {
+            display: none;
+            height: 100vh;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+
+        .memories-header {
+            text-align: center;
+            color: #fff;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .memories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .memory-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transform: translateY(50px);
+            opacity: 0;
+            animation: slideUp 0.8s ease forwards;
+        }
+
+        .memory-card:nth-child(1) { animation-delay: 0.2s; }
+        .memory-card:nth-child(2) { animation-delay: 0.4s; }
+        .memory-card:nth-child(3) { animation-delay: 0.6s; }
+        .memory-card:nth-child(4) { animation-delay: 0.8s; }
+
+        @keyframes slideUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .memory-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 5px solid #ff69b4;
+        }
+
+        .memory-title {
+            font-size: 1.5rem;
+            color: #e91e63;
+            margin-bottom: 1rem;
+        }
+
+        .questions {
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .question {
+            background: rgba(255, 255, 255, 0.95);
+            margin: 2rem auto;
+            padding: 2rem;
+            border-radius: 20px;
+            max-width: 600px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .question-text {
+            font-size: 1.8rem;
+            color: #e91e63;
+            margin-bottom: 1.5rem;
+        }
+
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @media (max-width: 768px) {
+            .proposal-text { font-size: 1.8rem; }
+            .buttons { flex-direction: column; gap: 1.5rem; }
+            .memories-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Hearts Background -->
+    <div class="hearts-container" id="heartsContainer"></div>
+
+    <!-- Page 1: Proposal -->
+    <div class="page1" id="page1">
+        <div class="proposal-text">
+            Happy Birthday My Love! 🎂💕<br>
+            <span style="font-size: 2rem; margin-top: 1rem; display: block;">
+                Would you like to be mine forever? 💍
+            </span>
+        </div>
+        <div class="buttons">
+            <button class="btn yes-btn" id="yesBtn" onclick="goToMemories()">YES 😍</button>
+            <button class="btn no-btn" id="noBtn">NO 😢</button>
+        </div>
+    </div>
+
+    <!-- Page 2: Memories & Questions -->
+    <div class="page2" id="page2">
+        <h1 class="memories-header">Our Beautiful Moments Together 💕</h1>
+        
+        <div class="memories-grid">
+            <div class="memory-card">
+                <img src="https://images.unsplash.com/photo-1516589178581-6cd7838b8c47?w=300&h=300&fit=crop&crop=face" alt="First Date" class="memory-img">
+                <h3 class="memory-title">Our First Date ✨</h3>
+                <p>That magical evening when I first saw your smile up close! 🥰</p>
+            </div>
+            
+            <div class="memory-card">
+                <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=300&h=300&fit=crop&crop=face" alt="Laughing Together" class="memory-img">
+                <h3 class="memory-title">Laughing Till Our Stomach Hurt 😂</h3>
+                <p>Your laugh is my favorite sound in the world! 🎶</p>
+            </div>
+            
+            <div class="memory-card">
+                <img src="https://images.unsplash.com/photo-1570392228166-6a1f3e4ee93a?w=300&h=300&fit=crop&crop=face" alt="Cuddles" class="memory-img">
+                <h3 class="memory-title">Cuddle Nights 🥰</h3>
+                <p>Nothing feels better than being in your arms! 💕</p>
+            </div>
+            
+            <div class="memory-card">
+                <img src="https://images.unsplash.com/photo-1516979187457-637a1ec45b07?w=300&h=300&fit=crop&crop=face" alt="Future Together" class="memory-img">
+                <h3 class="memory-title">Our Future 💍</h3>
+                <p>Can't wait to build our dreams together forever! 🌟</p>
+            </div>
+        </div>
+
+        <div class="questions">
+            <div class="question">
+                <div class="question-text">Q1: What's your favorite memory of us? 💭</div>
+                <textarea placeholder="Tell me your favorite moment..." rows="3" style="width: 100%; padding: 1rem; border-radius: 10px; border: 2px solid #ff69b4; font-size: 1.1rem;"></textarea>
+            </div>
+            
+            <div class="question">
+                <div class="question-text">Q2: What do you love most about me? 🥰</div>
+                <textarea placeholder="I want to know everything! 💕" rows="3" style="width: 100%; padding: 1rem; border-radius: 10px; border: 2px solid #ff69b4; font-size: 1.1rem;"></textarea>
+            </div>
+            
+            <div class="question">
+                <div class="question-text">Q3: Where should we go for our first anniversary? ✈️</div>
+                <textarea placeholder="Dream destination..." rows="3" style="width: 100%; padding: 1rem; border-radius: 10px; border: 2px solid #ff69b4; font-size: 1.1rem;"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // No button magic - moves around when hovered
+        const noBtn = document.getElementById('noBtn');
+        noBtn.addEventListener('mouseenter', function(e) {
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            const angle = Math.atan2(y, x);
+            const distance = Math.min(100, Math.sqrt(x*x + y*y));
+            
+            const moveX = Math.cos(angle) * distance;
+            const moveY = Math.sin(angle) * distance;
+            
+            this.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        });
+
+        noBtn.addEventListener('mouseleave', function() {
+            this.style.transform = '';
+        });
+
+        // Prevent clicking NO button easily
+        noBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            return false;
+        });
+
+        function goToMemories() {
+            document.getElementById('page1').style.display = 'none';
+            document.getElementById('page2').style.display = 'block';
+            
+            // Add glow effect to YES button before hiding
+            const yesBtn = document.getElementById('yesBtn');
+            yesBtn.classList.add('btn-glow');
+            
+            // Create celebration effect
+            createFireworks();
+        }
+
+        // Floating hearts
+        function createHearts() {
+            const heartsContainer = document.getElementById('heartsContainer');
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '💕';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                heartsContainer.appendChild(heart);
+                
+                setTimeout(() => heart.remove(), 7000);
+            }, 300);
+        }
+
+        // Fireworks celebration
+        function createFireworks() {
+            for(let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const firework = document.createElement('div');
+                    firework.style.position = 'fixed';
+                    firework.style.left = Math.random() * 100 + 'vw';
+                    firework.style.top = Math.random() * 100 + 'vh';
+                    firework.style.fontSize = '30px';
+                    firework.innerHTML = ['🎉', '✨', '💖', '🌟', '💫'][Math.floor(Math.random() * 5)];
+                    firework.style.zIndex = '1000';
+                    firework.style.pointerEvents = 'none';
+                    document.body.appendChild(firework);
+                    
+                    setTimeout(() => firework.remove(), 2000);
+                }, i * 50);
+            }
+        }
+
+        // Start hearts animation
+        createHearts();
+
+        // Mobile responsiveness for buttons
+        window.addEventListener('resize', function() {
+            const buttons = document.querySelector('.buttons');
+            if (window.innerWidth < 768) {
+                buttons.style.flexDirection = 'column';
+            } else {
+                buttons.style.flexDirection = 'row';
+            }
+        });
+    </script>
 </body>
 </html>
