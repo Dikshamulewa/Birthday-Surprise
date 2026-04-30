@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Love 💕</title>
+<style>
+* {margin:0;padding:0;box-sizing:border-box;}
+body {font-family:Arial,sans-serif;background:linear-gradient(135deg,#ff9a9e 0%,#fecfef 100%);height:100vh;overflow:hidden;position:relative;}
+.heart{position:absolute;color:#ff69b4;font-size:20px;animation:float 6s infinite linear;}
+@keyframes float{0%{transform:translateY(100vh) rotate(0deg);opacity:0;}10%{opacity:1;}90%{opacity:1;}100%{transform:translateY(-100px) rotate(360deg);opacity:0;}}
+.page1{display:flex;flex-direction:column;justify-content:center;align-items:center;height:100vh;text-align:center;position:relative;}
+.proposal-text{font-size:2.5rem;color:#fff;text-shadow:2px 2px 4px rgba(0,0,0,0.3);margin-bottom:3rem;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
+.buttons{display:flex;gap:3rem;}
+.btn{padding:1.5rem 3rem;font-size:1.5rem;border:none;border-radius:50px;cursor:pointer;transition:all 0.3s ease;font-weight:bold;text-transform:uppercase;}
+.yes-btn{background:linear-gradient(45deg,#ff6b6b,#ff8e8e);color:white;box-shadow:0 10px 30px rgba(255,107,107,0.4);}
+.no-btn{background:linear-gradient(45deg,#bdc3c7,#95a5a6);color:#2c3e50;box-shadow:0 10px 30px rgba(189,195,199,0.4);}
+.no-btn:hover{transform:translate(calc(50vw-50%),calc(50vh-50%)) !important;background:linear-gradient(45deg,#e74c3c,#c0392b) !important;color:white !important;}
+.page2{display:none;height:100vh;overflow-y:auto;padding:2rem;background:#ff9a9e;}
+.memories-header{text-align:center;color:#fff;font-size:3rem;margin-bottom:2rem;}
+.memory-card{background:rgba(255,255,255,0.95);border-radius:20px;padding:2rem;margin:1rem auto;max-width:400px;text-align:center;box-shadow:0 20px 40px rgba(0,0,0,0.1);}
+.memory-img{width:150px;height:150px;border-radius:50%;object-fit:cover;margin-bottom:1rem;border:5px solid #ff69b4;}
+.hearts-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;}
+@media (max-width:768px){.proposal-text{font-size:1.8rem;}.buttons{flex-direction:column;gap:1.5rem;}}
+</style>
+</head>
+<body>
+<div class="hearts-container" id="hearts"></div>
+<div class="page1" id="page1">
+<div class="proposal-text">Happy Birthday My Love! 🎂💕<br><span style="font-size:2rem;">Would you like to be mine forever? 💍</span></div>
+<div class="buttons">
+<button class="btn yes-btn" onclick="showPage2()">YES 😍</button>
+<button class="btn no-btn" id="noBtn">NO 😢</button>
+</div>
+</div>
+
+<div class="page2" id="page2">
+<h1 class="memories-header">Our Beautiful Moments 💕</h1>
+<div class="memory-card">
+<img src="https://images.unsplash.com/photo-1516589178581-6cd7838b8c47?w=200" class="memory-img">
+<h3>First Date ✨</h3><p>Your smile stole my heart! 🥰</p>
+</div>
+<div class="memory-card">
+<img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=200" class="memory-img">
+<h3>Laughing Together 😂</h3><p>Best moments with you!</p>
+</div>
+<div class="memory-card">
+<img src="https://images.unsplash.com/photo-1570392228166-6a1f3e4ee93a?w=200" class="memory-img">
+<h3>Cuddles 🥰</h3><p>Love being in your arms!</p>
+</div>
+</div>
+
+<script>
+const noBtn=document.getElementById('noBtn');noBtn.onmouseenter=function(e){const rect=this.getBoundingClientRect();const x=e.clientX-rect.left-rect.width/2;const y=e.clientY-rect.top-rect.height/2;const angle=Math.atan2(y,x);const distance=Math.min(100,Math.sqrt(x*x+y*y));this.style.transform=`translate(${Math.cos(angle)*distance}px,${Math.sin(angle)*distance}px)`};noBtn.onmouseleave=function(){this.style.transform=''};noBtn.onclick=function(e){e.preventDefault();return false;}
+function showPage2(){document.getElementById('page1').style.display='none';document.getElementById('page2').style.display='block';}
+setInterval(()=>{const heart=document.createElement('div');heart.className='heart';heart.innerHTML='💕';heart.style.left=Math.random()*100+'vw';heart.style.animationDuration=(Math.random()*3+3)+'s';document.getElementById('hearts').appendChild(heart);setTimeout(()=>heart.remove(),7000);},500);
+</script>
+</body>
+</html>
